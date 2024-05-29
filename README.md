@@ -1,3 +1,5 @@
+This is a simple TCP server that accepts multiple TCP clients that can run on your local computer for testing.
+
 In the first terminal, run below commands to start the server:
 ```
 cd TcpServer
