@@ -1,12 +1,12 @@
 In the first terminal, run below commands to start the server:
 ```
-cd /TcpServer
+cd TcpServer
 dotnet run 
 ```
 
 In the second terminal, run below command to start the client which will automatically connect to the server:
 ```
-cd /TcpClient
+cd TcpClient
 dotnet run
 ```
 
