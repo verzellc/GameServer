@@ -4,9 +4,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TcpLib
+namespace TcpMessageHandler
 {
-    public static class TcpHelper
+    public static class TcpMessageProcessor
     {
         public static async Task ReceiveData(Socket socket, string identifier)
         {
@@ -38,36 +38,37 @@ namespace TcpLib
             }
         }
 
-        public static async Task SendData(Socket socket, string identifier)
+        public static async Task SendData(Socket socket, string message, string identifier)
         {
             try
             {
-                while (true)
+                var messageBytes = Encoding.UTF8.GetBytes(message);
+                _ = await socket.SendAsync(messageBytes, SocketFlags.None);
+                Console.WriteLine($"{identifier} sent message: \"{message}\"");
+                
+                if (message.Equals("close", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    string? message = Console.ReadLine();
-                    if (string.IsNullOrEmpty(message))
-                    {
-                        continue;
-                    }
-
-                    var messageBytes = Encoding.UTF8.GetBytes(message);
-                    _ = await socket.SendAsync(messageBytes, SocketFlags.None);
-                    Console.WriteLine($"{identifier} sent message: \"{message}\"");
-                    
-                    if (message.Equals("close", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        break;
-                    }
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-            finally
+        }
+
+        public static string ReadMessage()
+        {
+            while (true)
             {
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
+                Console.WriteLine("Enter message:");
+                string? message = Console.ReadLine();
+                if (!string.IsNullOrEmpty(message))
+                {
+                    return message;
+                }
+                Console.WriteLine("Message cannot be empty. Please enter a valid message.");
             }
         }
     }

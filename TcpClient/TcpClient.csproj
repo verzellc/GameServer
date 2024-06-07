@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\TcpLib\TcpLib.csproj" />
+    <ProjectReference Include="..\TcpMessageHandler\TcpMessageHandler.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

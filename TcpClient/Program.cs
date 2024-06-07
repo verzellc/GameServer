@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using TcpLib;
+using TcpMessageHandler;
 
 var hostName = Dns.GetHostName();
 IPHostEntry localhost = await Dns.GetHostEntryAsync(hostName);
@@ -18,8 +18,8 @@ try
     await client.ConnectAsync(ipEndPoint);
     Console.WriteLine($"Server connected: {client.RemoteEndPoint}.");
 
-    var receiveTask = Task.Run(() => TcpHelper.ReceiveData(client, "Client"));
-    var sendTask = Task.Run(() => TcpHelper.SendData(client, "Client"));
+    var receiveTask = Task.Run(() => TcpMessageProcessor.ReceiveData(client, "Client"));
+    var sendTask = Task.Run(() => ClientSendData());
     await Task.WhenAll(receiveTask, sendTask);
 }
 catch (Exception e) 
@@ -30,4 +30,19 @@ finally
 {
     client.Shutdown(SocketShutdown.Both);
     client.Close();
+}
+
+
+async Task ClientSendData()
+{
+    while (true)
+    {
+        string message = TcpMessageProcessor.ReadMessage();
+        await TcpMessageProcessor.SendData(client, message, "Client");
+        
+        if (message.Equals("close", StringComparison.InvariantCultureIgnoreCase))
+        {
+            break;
+        }
+    }
 }

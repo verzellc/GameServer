@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServer", "TcpServer\TcpS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "TcpClient\TcpClient.csproj", "{3927EEF8-03CC-496B-94A7-F1179F4D2AE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpLib", "TcpLib\TcpLib.csproj", "{2604F611-9F23-4AB7-AA04-04BBD1F0F667}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpMessageHandler", "TcpMessageHandler\TcpMessageHandler.csproj", "{7E4EA676-1F8D-4E7A-A098-9E915E51B052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +26,9 @@ Global
 		{3927EEF8-03CC-496B-94A7-F1179F4D2AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3927EEF8-03CC-496B-94A7-F1179F4D2AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3927EEF8-03CC-496B-94A7-F1179F4D2AE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2604F611-9F23-4AB7-AA04-04BBD1F0F667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2604F611-9F23-4AB7-AA04-04BBD1F0F667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2604F611-9F23-4AB7-AA04-04BBD1F0F667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2604F611-9F23-4AB7-AA04-04BBD1F0F667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4EA676-1F8D-4E7A-A098-9E915E51B052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4EA676-1F8D-4E7A-A098-9E915E51B052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4EA676-1F8D-4E7A-A098-9E915E51B052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4EA676-1F8D-4E7A-A098-9E915E51B052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
